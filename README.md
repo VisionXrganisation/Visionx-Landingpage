@@ -1,7 +1,5 @@
 # Stalight Technology
 
-![Stalight Technology Logo](path/to/logo.png)
-
 ## Description
 
 Stalight Technology is a cutting-edge technology company specializing in innovative digital solutions. Our landing page serves as the online gateway to our services, providing visitors with a seamless and engaging experience.
@@ -28,31 +26,12 @@ Follow these steps to set up the project locally:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-repository/stalight-technology-landing.git
+   git clone https://github.com/VisionXrganisation/Visionx-LandingPage.git
    cd stalight-technology-landing
-Install Dependencies
-
-bash
-Copy
-Edit
+Install Dependencies:
 npm install
-or if you're using Yarn:
 
-bash
-Copy
-Edit
-yarn install
-Start the Development Server
-
-bash
-Copy
-Edit
+Start the Development Server:
 npm run dev
-or with Yarn:
-
-bash
-Copy
-Edit
-yarn dev
 This will start the development server using Vite, and you can view your application in the browser at http://localhost:5173.
 
