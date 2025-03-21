@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <Sparkles className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">Starlight</span>
+              <span className="text-xl font-bold text-gray-900">Stalight</span>
             </Link>
           </div>
 

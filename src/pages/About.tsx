@@ -13,16 +13,20 @@ const About = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-            alt="Modern Office"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="https://static.videezy.com/system/resources/previews/000/041/172/original/tech-1.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-blue-900/70 backdrop-blur-sm"></div>
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -30,7 +34,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-6xl font-bold mb-6"
           >
-            About Starlight
+            About Stalight
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -99,6 +103,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
+                whileHover={{ scale: 1.05, rotate: [0, 5, -5, 5, 0] }}
                 className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="bg-blue-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 mx-auto">
@@ -122,7 +127,7 @@ const About = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Leadership Team</h2>
-            <p className="text-xl text-gray-600">Meet the people driving innovation at Starlight</p>
+            <p className="text-xl text-gray-600">Meet the people driving innovation at Stalight</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -133,7 +138,8 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="text-center"
+                whileHover={{ scale: 1.05, boxShadow: "0 20px 30px rgba(0, 0, 0, 0.1)" }}
+                className="text-center bg-white p-6 rounded-2xl shadow-lg"
               >
                 <div className="relative mb-6 inline-block">
                   <img

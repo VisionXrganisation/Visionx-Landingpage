@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Users, BarChart, Shield, Play, ChevronRight } from 'lucide-react';
@@ -9,7 +9,15 @@ const Home = () => {
   const y = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
 
   const words = "Transform Education with".split(" ");
-  
+
+  // Create a ref for the target section
+  const actionSectionRef = useRef(null);
+
+  // Function to scroll to the target section
+  const scrollToActionSection = () => {
+    actionSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -21,8 +29,8 @@ const Home = () => {
             className="w-full h-full object-cover opacity-20"
           />
         </div>
-        
-        <motion.div 
+
+        <motion.div
           style={{ opacity, y }}
           className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         >
@@ -44,16 +52,16 @@ const Home = () => {
               </motion.span>
             ))}
           </div>
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
             className="text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300 mb-8"
           >
-            Starlight Technology
+            Stalight Technology
           </motion.div>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,22 +70,22 @@ const Home = () => {
           >
             Empowering educators and students with innovative solutions for a brighter future in education.
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
             className="flex flex-col sm:flex-row justify-center gap-4"
           >
-            <Link
-              to="/demo"
+            <button
+              onClick={scrollToActionSection}
               className="group bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all transform hover:scale-105"
             >
               <span className="flex items-center justify-center">
                 Get Started
                 <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </span>
-            </Link>
+            </button>
             <Link
               to="/about"
               className="group bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all transform hover:scale-105"
@@ -115,7 +123,7 @@ const Home = () => {
       </section>
 
       {/* Video Showcase Section */}
-      <section className="py-20 bg-gray-900">
+      <section ref={actionSectionRef} className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -123,7 +131,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">See Starlight in Action</h2>
+            <h2 className="text-4xl font-bold text-white mb-6">See Stalight in Action</h2>
             <p className="text-xl text-gray-400">Experience how our solutions transform education</p>
           </motion.div>
 
@@ -147,6 +155,7 @@ const Home = () => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.button
                   whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   className="bg-white/90 p-4 rounded-full"
                 >
                   <Play className="h-8 w-8 text-blue-600" />
@@ -162,7 +171,7 @@ const Home = () => {
             >
               <h3 className="text-3xl font-bold">Smart Learning Platform</h3>
               <p className="text-gray-400">
-                Watch how our intelligent learning system adapts to each student's needs, 
+                Watch how our intelligent learning system adapts to each student's needs,
                 providing personalized learning paths and real-time feedback.
               </p>
               <ul className="space-y-4">
@@ -200,7 +209,7 @@ const Home = () => {
               viewport={{ once: true }}
               className="inline-block"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Starlight?</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Stalight?</h2>
               <div className="h-1 w-20 bg-blue-600 mx-auto rounded-full" />
             </motion.div>
             <p className="text-xl text-gray-600 mt-4">Comprehensive solutions for modern education management</p>
@@ -214,7 +223,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -10, scale: 1.05 }}
                 className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
               >
                 <div className="bg-gradient-to-br from-blue-50 to-purple-50 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
@@ -239,7 +248,7 @@ const Home = () => {
           >
             What Our Users Say
           </motion.h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -248,7 +257,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.05, rotate: [0, 5, -5, 5, 0] }}
                 className="bg-white p-6 rounded-xl shadow-lg"
               >
                 <div className="flex items-center mb-4">
@@ -322,7 +331,7 @@ const testimonials = [
   {
     name: "Dr. Sarah Johnson",
     role: "Principal, Lincoln High School",
-    quote: "Starlight has revolutionized how we manage our school. The analytics tools have been invaluable for tracking student progress.",
+    quote: "Stalight has revolutionized how we manage our school. The analytics tools have been invaluable for tracking student progress.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80"
   },
   {
@@ -334,7 +343,7 @@ const testimonials = [
   {
     name: "Lisa Rodriguez",
     role: "Teacher, Riverside Elementary",
-    quote: "Starlight's student management tools have helped me focus more on teaching and less on paperwork.",
+    quote: "Stalight's student management tools have helped me focus more on teaching and less on paperwork.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80"
   }
 ];

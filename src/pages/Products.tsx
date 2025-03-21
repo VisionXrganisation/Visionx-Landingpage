@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  BookOpen, Users, BarChart, Shield, 
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import {
+  BookOpen, Users, BarChart, Shield,
   Calendar, MessageSquare, FileText, Settings,
   CheckCircle, Zap, Award, TrendingUp
 } from 'lucide-react';
@@ -17,7 +18,7 @@ const Products = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center">
+      <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80"
@@ -26,7 +27,7 @@ const Products = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -62,7 +63,7 @@ const Products = () => {
               } mb-20`}
             >
               <div className="flex-1">
-                <div className="bg-gradient-to-tr from-blue-100 to-purple-100 p-1 rounded-2xl">
+                <div className="bg-gradient-to-tr from-blue-100 to-purple-100 p-1 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
                   <img
                     src={product.image}
                     alt={product.title}
@@ -121,6 +122,7 @@ const Products = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, rotate: [0, 5, -5, 5, 0] }}
                 className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 ${feature.iconBg}`}>
@@ -147,11 +149,11 @@ const Products = () => {
               Ready to Transform Your Institution?
             </h2>
             <p className="text-xl text-blue-100 mb-8">
-              Join thousands of institutions already using Starlight to improve their educational outcomes.
+              Join thousands of institutions already using Stalight to improve their educational outcomes.
             </p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition">
+            <Link to="/contact" className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition">
               Get Started Today
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>

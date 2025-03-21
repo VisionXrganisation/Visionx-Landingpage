@@ -24,7 +24,7 @@ const Contact = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -64,17 +64,23 @@ const Contact = () => {
               </div>
 
               <div className="space-y-6">
-                <div className="flex items-center space-x-4">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center space-x-4"
+                >
                   <div className="bg-blue-100 p-3 rounded-lg">
                     <Mail className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">info@starlight.tech</p>
+                    <p className="text-gray-600">info@stalight.tech</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center space-x-4">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center space-x-4"
+                >
                   <div className="bg-green-100 p-3 rounded-lg">
                     <Phone className="h-6 w-6 text-green-600" />
                   </div>
@@ -82,20 +88,23 @@ const Contact = () => {
                     <h3 className="text-lg font-semibold text-gray-900">Phone</h3>
                     <p className="text-gray-600">+1 (555) 123-4567</p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center space-x-4">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center space-x-4"
+                >
                   <div className="bg-purple-100 p-3 rounded-lg">
                     <MapPin className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">Address</h3>
-                    <p className="text-gray-600">123 Tech Street, Silicon Valley, CA</p>
+                    <p className="text-gray-600">VisionX, 12.9330376, 77.560489</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
-              <div className="bg-gray-50 p-6 rounded-2xl">
+              <div className="bg-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Office Hours</h3>
                 <div className="space-y-2">
                   <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
@@ -161,7 +170,9 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   type="submit"
                   className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition flex items-center justify-center space-x-2"
                 >
@@ -176,7 +187,7 @@ const Contact = () => {
                       <span>Send Message</span>
                     </>
                   )}
-                </button>
+                </motion.button>
               </form>
             </motion.div>
           </div>
@@ -193,7 +204,7 @@ const Contact = () => {
             className="bg-white rounded-2xl shadow-lg overflow-hidden"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.3325395304414!2d-122.01487868467422!3d37.33463524513264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb59127ce078f%3A0x18e1c3ce7becf1b!2sApple%20Park!5e0!3m2!1sen!2sin!4v1637309850935!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.697434059836!2d77.560489!3d12.9330376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3f06a0033bc5%3A0xef3cdd41c8060588!2sVisionX!5e0!3m2!1sen!2sin!4v1695271928471!5m2!1sen!2sin"
               width="100%"
               height="450"
               style={{ border: 0 }}

@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Sparkles className="h-8 w-8 text-blue-400" />
-              <span className="text-xl font-bold">Starlight</span>
+              <span className="text-xl font-bold">Stalight</span>
             </div>
             <p className="text-gray-400">
               Transforming education through innovative technology solutions.
@@ -42,7 +42,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-400">info@starlight.tech</span>
+                <span className="text-gray-400">info@stalight.tech</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-blue-400" />
@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Starlight Technology. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Stalight Technology. All rights reserved.</p>
         </div>
       </div>
     </footer>
