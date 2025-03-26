@@ -1,19 +1,69 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, X } from 'lucide-react';
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const [isSending, setIsSending] = useState(false); // Added missing state
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add form submission logic here
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setIsSending(true);
+    const formData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    };
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/contact/send-email/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setResponseMessage("Your message has been sent successfully!");
+        setShowPopup(true);
+
+        // Auto-hide the popup after 3 seconds
+        setTimeout(() => {
+          setShowPopup(false);
+        }, 3000);
+
+      } else {
+        setIsSubmitted(false);
+        setResponseMessage("Failed to send email. Please try again.");
+      }
+    } catch (error) {
+      setResponseMessage("An error occurred. Please try again later.");
+      console.error("Error:", error);
+    } finally {
+      setIsSending(false); // Ensure sending state is reset
+    }
   };
 
   return (
     <div className="pt-16">
+      {/* Popup Message */}
+      {showPopup && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="fixed top-10 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-3 z-50"
+        >
+          <CheckCircle className="h-6 w-6" />
+          <span>{responseMessage}</span>
+          <button onClick={() => setShowPopup(false)} className="ml-4">
+            <X className="h-5 w-5" />
+          </button>
+        </motion.div>
+      )}
       {/* Hero Section */}
       <section className="relative h-[40vh] flex items-center">
         <div className="absolute inset-0">
@@ -73,7 +123,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">info@stalight.tech</p>
+                    <p className="text-gray-600">infostalight@gmail.com</p>
                   </div>
                 </motion.div>
 
@@ -86,7 +136,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">Phone</h3>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
+                    <p className="text-gray-600">91+ 8660144040</p>
                   </div>
                 </motion.div>
 
@@ -174,9 +224,17 @@ const Contact = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition flex items-center justify-center space-x-2"
+                  disabled={isSending}
+                  className={`w-full py-3 px-6 rounded-lg transition flex items-center justify-center space-x-2 ${
+                    isSending ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700"
+                  }`}
                 >
-                  {isSubmitted ? (
+                  {isSending ? (
+                    <>
+                      <Send className="h-5 w-5 animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : isSubmitted ? (
                     <>
                       <CheckCircle className="h-5 w-5" />
                       <span>Message Sent!</span>

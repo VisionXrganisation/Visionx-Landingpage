@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Target, Heart, Users, Lightbulb, Rocket } from 'lucide-react';
+import ceo from '../assets/ceo.jpg';
+import cto from '../assets/cto.jpg';
 
 const About = () => {
   const fadeIn = {
@@ -130,7 +132,7 @@ const About = () => {
             <p className="text-xl text-gray-600">Meet the people driving innovation at Stalight</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center max-w-4xl mx-auto">
             {team.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -181,23 +183,17 @@ const values = [
 
 const team = [
   {
-    name: "Sarah Anderson",
+    name: "Ritesh N",
     role: "Chief Executive Officer",
-    bio: "Former educator turned tech innovator with 15+ years of experience in EdTech.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    bio: "Former educator turned tech innovator with 2+ years of experience in EdTech.",
+    image: ceo
   },
   {
-    name: "David Chen",
+    name: "Pannaga J A",
     role: "Chief Technology Officer",
     bio: "Tech visionary with a passion for creating scalable education solutions.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    image: cto  
   },
-  {
-    name: "Emily Rodriguez",
-    role: "Head of Product",
-    bio: "Product strategist focused on creating intuitive educational experiences.",
-    image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-  }
 ];
 
 export default About;

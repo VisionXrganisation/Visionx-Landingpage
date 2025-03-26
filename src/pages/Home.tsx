@@ -2,6 +2,10 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Users, BarChart, Shield, Play, ChevronRight } from 'lucide-react';
+import user1 from "../assets/ruthu.jpeg";
+import user2 from "../assets/praveen.jpeg";
+import user3 from "../assets/shashank.jpeg";
+
 
 const Home = () => {
   const { scrollYProgress } = useScroll();
@@ -291,7 +295,7 @@ const Home = () => {
           >
             <h2 className="text-3xl font-bold text-white mb-8">Ready to Transform Your Institution?</h2>
             <Link
-              to="/demo"
+              to="/contact"
               className="inline-flex items-center bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition transform hover:scale-105"
             >
               Schedule a Demo
@@ -329,23 +333,23 @@ const features = [
 
 const testimonials = [
   {
-    name: "Dr. Sarah Johnson",
-    role: "Principal, Lincoln High School",
-    quote: "Stalight has revolutionized how we manage our school. The analytics tools have been invaluable for tracking student progress.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80"
-  },
-  {
-    name: "Prof. Michael Chen",
-    role: "Department Head, State University",
-    quote: "The platform's intuitive design and powerful features have made administrative tasks much more efficient.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80"
-  },
-  {
-    name: "Lisa Rodriguez",
-    role: "Teacher, Riverside Elementary",
+    name: "Ruthu Parinika",
+    role: "Intern, Stalight Technology",
     quote: "Stalight's student management tools have helped me focus more on teaching and less on paperwork.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80"
-  }
+    image: user1
+  },
+  {
+    name: "Shashank",
+    role: "Intern, Stalight Technology",
+    quote: "Stalight's student management tools have helped me focus more on teaching and less on paperwork.",
+    image: user3
+  },
+  {
+    name: "Praveen V",
+    role: "Intern, Stalight Technology",
+    quote: "Stalight's student management tools have helped me focus more on teaching and less on paperwork.",
+    image: user2
+  },
 ];
 
 export default Home;

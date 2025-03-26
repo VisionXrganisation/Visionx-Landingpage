@@ -8,6 +8,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
+import PrivacyPolicy from "./pages/privacypolicy";
+import TermsOfService from "./pages/TermsOfService";  
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -45,6 +47,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/products" element={<Products />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
             </Routes>
           </main>
           <Footer />

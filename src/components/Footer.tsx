@@ -22,8 +22,6 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><Link to="/about" className="text-gray-400 hover:text-white transition">About Us</Link></li>
               <li><Link to="/products" className="text-gray-400 hover:text-white transition">Products</Link></li>
-              <li><Link to="/blog" className="text-gray-400 hover:text-white transition">Blog</Link></li>
-              <li><Link to="/careers" className="text-gray-400 hover:text-white transition">Careers</Link></li>
             </ul>
           </div>
 
@@ -31,7 +29,6 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Support</h3>
             <ul className="space-y-2">
               <li><Link to="/contact" className="text-gray-400 hover:text-white transition">Contact</Link></li>
-              <li><Link to="/faq" className="text-gray-400 hover:text-white transition">FAQ</Link></li>
               <li><Link to="/privacy" className="text-gray-400 hover:text-white transition">Privacy Policy</Link></li>
               <li><Link to="/terms" className="text-gray-400 hover:text-white transition">Terms of Service</Link></li>
             </ul>
@@ -42,15 +39,15 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-400">info@stalight.tech</span>
+                <span className="text-gray-400">infostalight@gmail.com</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-gray-400">91+ 8660144040</span>
               </li>
               <li className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-400">123 Tech Street, Silicon Valley, CA</span>
+                <span className="text-gray-400">VisionX, 12.9330376, 77.560489</span>
               </li>
             </ul>
           </div>
