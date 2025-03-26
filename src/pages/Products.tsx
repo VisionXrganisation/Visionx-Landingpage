@@ -6,7 +6,6 @@ import {
   Calendar, MessageSquare, FileText, Settings,
   CheckCircle, Zap, Award, TrendingUp
 } from 'lucide-react';
-import { TracingBeam } from '../ui/tracing-beam'; // Import the TracingBeam component
 
 const Products = () => {
   const fadeIn = {

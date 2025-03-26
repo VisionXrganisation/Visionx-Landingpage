@@ -58,7 +58,7 @@ const Home = () => {
             className="w-full h-full object-cover opacity-20"
           />
         </div>
-
+ 
         <motion.div
           style={{ opacity, y }}
           className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
@@ -81,7 +81,7 @@ const Home = () => {
               </motion.span>
             ))}
           </div>
-
+ 
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -90,7 +90,7 @@ const Home = () => {
           >
             Stalight Technology
           </motion.div>
-
+ 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ const Home = () => {
           >
             Empowering educators and students with innovative solutions for a brighter future in education.
           </motion.p>
-
+ 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,7 +123,7 @@ const Home = () => {
             </Link>
           </motion.div>
         </motion.div>
-
+ 
         <motion.div
           animate={{
             y: [0, -10, 0],
@@ -152,7 +152,7 @@ const Home = () => {
       </section>
 
       {/* Video Showcase Section */}
-     <section className="py-20 bg-gray-900">
+     <section ref={actionSectionRef} className="py-20 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
