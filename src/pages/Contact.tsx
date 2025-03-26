@@ -65,7 +65,7 @@ const Contact = () => {
         </motion.div>
       )}
       {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-center">
+      <section className="relative h-[45vh] flex items-center">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -75,24 +75,27 @@ const Contact = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <div className="relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-10 text-center text-white py-8 md:py-10">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-extrabold mb-3 bg-gradient-to-r from-white to-blue-400 text-transparent bg-clip-text"
           >
-            Contact Us
+            Let's Connect & Collaborate!
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto leading-relaxed"
           >
-            Get in touch with our team
+            Have questions or ideas? Reach out and let’s build something amazing together.  
+            Our team is here to support and innovate with you!
           </motion.p>
         </div>
+
       </section>
 
       {/* Contact Section */}

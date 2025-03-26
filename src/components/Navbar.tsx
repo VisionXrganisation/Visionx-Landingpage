@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { Dialog } from '@headlessui/react';
+import DemoVideo from '../assets/Demo_Video.mp4';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +84,7 @@ const Navbar = () => {
       <div className="relative w-full">
         <iframe
           className="w-full h-56 md:h-80 rounded-lg"
-          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          src={DemoVideo}
           title="Demo Video"
           allowFullScreen
         ></iframe>

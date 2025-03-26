@@ -15,7 +15,7 @@ const About = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[45vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <video
             autoPlay
@@ -29,24 +29,26 @@ const About = () => {
           <div className="absolute inset-0 bg-blue-900/70 backdrop-blur-sm"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white py-20">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-white to-purple-400 text-transparent bg-clip-text"
           >
-            About Stalight
+            Elevating Education with Innovation
           </motion.h1>
+          
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto leading-relaxed"
           >
-            Revolutionizing education through innovative technology solutions
+            At <span className="font-bold text-blue-400">Stalight Technology</span>, we are redefining learning with AI-driven solutions, immersive experiences, and smart automation. Join us in shaping the future of education.
           </motion.p>
         </div>
+
       </section>
 
       {/* Mission & Vision */}

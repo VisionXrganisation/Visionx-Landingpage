@@ -5,6 +5,8 @@ import { BookOpen, Users, BarChart, Shield, Play, ChevronRight } from 'lucide-re
 import user1 from "../assets/ruthu.jpeg";
 import user2 from "../assets/praveen.jpeg";
 import user3 from "../assets/shashank.jpeg";
+import LearningDemo from "../assets/Learning.mp4"; 
+import { useState } from "react";
 
 
 const Home = () => {
@@ -21,6 +23,29 @@ const Home = () => {
   const scrollToActionSection = () => {
     actionSectionRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+  
+    const handlePlay = () => {
+      if (videoRef.current) {
+        videoRef.current.muted = false; // Enable audio
+        videoRef.current.play();
+        setIsPlaying(true);
+      }
+    };
+  
+    const handleTogglePlay = () => {
+      if (videoRef.current) {
+        if (videoRef.current.paused) {
+          videoRef.current.play();
+          setIsPlaying(true);
+        } else {
+          videoRef.current.pause();
+          setIsPlaying(false);
+        }
+      }
+    };
 
   return (
     <div className="min-h-screen">
@@ -127,81 +152,86 @@ const Home = () => {
       </section>
 
       {/* Video Showcase Section */}
-      <section ref={actionSectionRef} className="py-20 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">See Stalight in Action</h2>
-            <p className="text-xl text-gray-400">Experience how our solutions transform education</p>
-          </motion.div>
+     <section className="py-20 bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-white mb-6">See Stalight in Action</h2>
+          <p className="text-xl text-gray-400">Experience how our solutions transform education</p>
+        </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative aspect-video rounded-2xl overflow-hidden group"
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative aspect-video rounded-2xl overflow-hidden group"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 group-hover:opacity-0 transition-opacity duration-300" />
+            
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover cursor-pointer"
+              onClick={handleTogglePlay}
+              loop
+              playsInline
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 group-hover:opacity-0 transition-opacity duration-300" />
-              <video
-                className="w-full h-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-              >
-                <source src="https://static.videezy.com/system/resources/previews/000/041/172/original/tech-1.mp4" type="video/mp4" />
-              </video>
+              <source src={LearningDemo} type="video/mp4" />
+            </video>
+
+            {!isPlaying && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="bg-white/90 p-4 rounded-full"
+                  onClick={handlePlay}
                 >
                   <Play className="h-8 w-8 text-blue-600" />
                 </motion.button>
               </div>
-            </motion.div>
+            )}
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6 text-white"
-            >
-              <h3 className="text-3xl font-bold">Smart Learning Platform</h3>
-              <p className="text-gray-400">
-                Watch how our intelligent learning system adapts to each student's needs,
-                providing personalized learning paths and real-time feedback.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "AI-powered learning recommendations",
-                  "Interactive virtual classrooms",
-                  "Real-time progress tracking",
-                  "Collaborative learning tools"
-                ].map((feature, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
-                    className="flex items-center space-x-3 text-gray-300"
-                  >
-                    <div className="h-2 w-2 bg-blue-500 rounded-full" />
-                    <span>{feature}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6 text-white"
+          >
+            <h3 className="text-3xl font-bold">Smart Learning Platform</h3>
+            <p className="text-gray-400">
+              Watch how our intelligent learning system adapts to each student's needs,
+              providing personalized learning paths and real-time feedback.
+            </p>
+            <ul className="space-y-4">
+              {[
+                "AI-powered learning recommendations",
+                "Interactive virtual classrooms",
+                "Real-time progress tracking",
+                "Collaborative learning tools"
+              ].map((feature, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className="flex items-center space-x-3 text-gray-300"
+                >
+                  <div className="h-2 w-2 bg-blue-500 rounded-full" />
+                  <span>{feature}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Features Section */}
       <section className="py-20 bg-white">
@@ -253,35 +283,31 @@ const Home = () => {
             What Our Users Say
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                whileHover={{ scale: 1.05, rotate: [0, 5, -5, 5, 0] }}
-                className="bg-white p-6 rounded-xl shadow-lg"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="relative">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full mr-4"
-                    />
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/20 to-purple-500/20" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-gray-600">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 italic">{testimonial.quote}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((testimonial, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.2 }}
+          whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgba(100, 255, 218, 0.7)" }}
+          className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-5 rounded-xl shadow-lg border border-gray-700 relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle,#6ee7b7_0%,transparent_70%)] opacity-20" />
+          <div className="flex items-center mb-3 relative z-10">
+            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg">
+              <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+            </div>
+            <div className="ml-3 text-white">
+              <h4 className="font-semibold text-lg leading-tight">{testimonial.name}</h4>
+              <p className="text-sm text-cyan-400">{testimonial.role}</p>
+            </div>
           </div>
+          <p className="text-gray-300 italic text-sm relative z-10">“{testimonial.quote}”</p>
+        </motion.div>
+      ))}
+    </div>
         </div>
       </section>
 
@@ -335,21 +361,22 @@ const testimonials = [
   {
     name: "Ruthu Parinika",
     role: "Intern, Stalight Technology",
-    quote: "Stalight's student management tools have helped me focus more on teaching and less on paperwork.",
+    quote: "Working at Stalight Technology has been an incredible journey! The hands-on projects and mentorship have sharpened my skills, and the dynamic work environment keeps me inspired every day.",
     image: user1
   },
   {
     name: "Shashank",
     role: "Intern, Stalight Technology",
-    quote: "Stalight's student management tools have helped me focus more on teaching and less on paperwork.",
+    quote: "At Stalight, I’ve gained real-world experience in a fast-paced tech environment. The collaborative culture and cutting-edge projects have truly accelerated my professional growth.",
     image: user3
   },
   {
     name: "Praveen V",
     role: "Intern, Stalight Technology",
-    quote: "Stalight's student management tools have helped me focus more on teaching and less on paperwork.",
+    quote: "Stalight Technology has given me the opportunity to work on meaningful projects with a talented team. The experience has been invaluable in shaping my career path!",
     image: user2
-  },
+  }
 ];
+
 
 export default Home;
