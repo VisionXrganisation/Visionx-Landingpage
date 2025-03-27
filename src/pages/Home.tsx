@@ -50,106 +50,108 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-            alt="Education Background"
-            className="w-full h-full object-cover opacity-20"
-          />
-        </div>
- 
-        <motion.div
-          style={{ opacity, y }}
-          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-        >
-          <div className="mb-6 flex justify-center">
-            {words.map((word, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: i * 0.2,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                className="text-4xl md:text-6xl font-bold text-white mx-2"
-              >
-                {word}
-              </motion.span>
-            ))}
-          </div>
- 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300 mb-8"
-          >
-            Stalight Technology
-          </motion.div>
- 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
-            className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto"
-          >
-            Empowering educators and students with innovative solutions for a brighter future in education.
-          </motion.p>
- 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.8 }}
-            className="flex flex-col sm:flex-row justify-center gap-4"
-          >
-            <button
-              onClick={scrollToActionSection}
-              className="group bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all transform hover:scale-105"
-            >
-              <span className="flex items-center justify-center">
-                Get Started
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </button>
-            <Link
-              to="/about"
-              className="group bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all transform hover:scale-105"
-            >
-              Learn More
-            </Link>
-          </motion.div>
-        </motion.div>
- 
-        <motion.div
-          animate={{
-            y: [0, -10, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <motion.div
-              animate={{
-                y: [0, 12, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="w-1 h-2 bg-white rounded-full mt-2"
+      <section className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 overflow-hidden px-4">
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Education Background"
+              className="w-full h-full object-cover opacity-20"
             />
           </div>
-        </motion.div>
-      </section>
+
+          <motion.div
+            style={{ opacity, y }}
+            className="relative max-w-5xl mx-auto text-center px-6 sm:px-8"
+          >
+            <div className="mb-6 flex flex-wrap justify-center">
+              {words.map((word, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: i * 0.2,
+                    type: "spring",
+                    stiffness: 100,
+                  }}
+                  className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mx-1 sm:mx-2"
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="text-4xl sm:text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300 mb-6 sm:mb-8"
+            >
+              Stalight Technology
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+              className="text-lg sm:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto"
+            >
+              Empowering educators and students with innovative solutions for a brighter
+              future in education.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.8 }}
+              className="flex flex-col sm:flex-row items-center gap-4"
+            >
+              <button
+                onClick={scrollToActionSection}
+                className="group bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 w-full sm:w-auto"
+              >
+                <span className="flex items-center justify-center">
+                  Get Started
+                  <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </button>
+              <Link
+                to="/about"
+                className="group bg-transparent border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all transform hover:scale-105 w-full sm:w-auto text-center"
+              >
+                Learn More
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            animate={{
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+          >
+            <div className="w-5 h-8 border-2 border-white rounded-full flex justify-center">
+              <motion.div
+                animate={{
+                  y: [0, 12, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-1 h-2 bg-white rounded-full mt-2"
+              />
+            </div>
+          </motion.div>
+        </section>
+
 
       {/* Video Showcase Section */}
      <section ref={actionSectionRef} className="py-20 bg-gray-900">

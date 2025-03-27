@@ -12,6 +12,10 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   const openPopup = () => {
     setIsPopupOpen(true);
   };
@@ -56,11 +60,41 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link to="/" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition">Home</Link>
-              <Link to="/about" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition">About</Link>
-              <Link to="/products" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition">Products</Link>
-              <Link to="/contact" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition">Contact</Link>
-              <button onClick={openPopup} className="block px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+              <Link
+                to="/"
+                onClick={closeMenu}
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition"
+              >
+                Home
+              </Link>
+              <Link
+                to="/about"
+                onClick={closeMenu}
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition"
+              >
+                About
+              </Link>
+              <Link
+                to="/products"
+                onClick={closeMenu}
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition"
+              >
+                Products
+              </Link>
+              <Link
+                to="/contact"
+                onClick={closeMenu}
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition"
+              >
+                Contact
+              </Link>
+              <button
+                onClick={() => {
+                  closeMenu();
+                  openPopup();
+                }}
+                className="block w-full text-left px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+              >
                 Get Demo
               </button>
             </div>
