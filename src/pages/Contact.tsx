@@ -4,53 +4,16 @@ import { Mail, Phone, MapPin, Send, CheckCircle, X } from 'lucide-react';
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [responseMessage, setResponseMessage] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
-  const [isSending, setIsSending] = useState(false); // Added missing state
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSending(true);
-    const formData = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      subject: document.getElementById("subject").value,
-      message: document.getElementById("message").value,
-    };
-
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/contact/send-email/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        setResponseMessage("Your message has been sent successfully!");
-        setShowPopup(true);
-
-        // Auto-hide the popup after 3 seconds
-        setTimeout(() => {
-          setShowPopup(false);
-        }, 3000);
-
-      } else {
-        setIsSubmitted(false);
-        setResponseMessage("Failed to send email. Please try again.");
-      }
-    } catch (error) {
-      setResponseMessage("An error occurred. Please try again later.");
-      console.error("Error:", error);
-    } finally {
-      setIsSending(false); // Ensure sending state is reset
-    }
+    setIsSubmitted(true);
   };
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 pb-8">
       {/* Popup Message */}
-      {showPopup && (
+      {isSubmitted && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -58,14 +21,14 @@ const Contact = () => {
           className="fixed top-10 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-3 z-50"
         >
           <CheckCircle className="h-6 w-6" />
-          <span>{responseMessage}</span>
-          <button onClick={() => setShowPopup(false)} className="ml-4">
+          <span>Your message has been sent successfully!</span>
+          <button onClick={() => setIsSubmitted(false)} className="ml-4">
             <X className="h-5 w-5" />
           </button>
         </motion.div>
       )}
       {/* Hero Section */}
-      <section className="relative h-[45vh] flex items-center">
+      <section className="relative h-[40vh] flex items-center">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
@@ -91,32 +54,31 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto leading-relaxed"
           >
-            Have questions or ideas? Reach out and let’s build something amazing together.  
+            Have questions or ideas? Reach out and let’s build something amazing together.
             Our team is here to support and innovate with you!
           </motion.p>
         </div>
-
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Information */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-6"
             >
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Let's Connect</h2>
-                <p className="text-lg text-gray-600 mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Let's Connect</h2>
+                <p className="text-lg text-gray-600">
                   Have questions about our products or services? We're here to help!
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   className="flex items-center space-x-4"
@@ -158,10 +120,10 @@ const Contact = () => {
               </div>
 
               <div className="bg-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Office Hours</h3>
-                <div className="space-y-2">
-                  <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                  <p className="text-gray-600">Saturday: 10:00 AM - 4:00 PM</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Office Hours</h3>
+                <div className="space-y-1">
+                  <p className="text-gray-600">Monday - Friday: 4:00 PM - 9:00 PM</p>
+                  <p className="text-gray-600">Saturday: 11:00 AM - 4:00 PM</p>
                   <p className="text-gray-600">Sunday: Closed</p>
                 </div>
               </div>
@@ -172,91 +134,86 @@ const Contact = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-2xl shadow-lg p-8"
+              className="bg-white rounded-2xl shadow-lg p-6 relative flex items-center justify-center"
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
+              <div className="max-w-xl w-full">
+                <h2 className="text-3xl font-bold mb-4 text-center">Contact Us</h2>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
+                {isSubmitted ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="flex flex-col items-center justify-center h-full"
+                  >
+                    <CheckCircle className="h-16 w-16 text-green-500 mb-4 animate-bounce" />
+                    <span className="text-green-600 text-xl text-center font-semibold">
+                      Thank you! Your response has been recorded.
+                    </span>
+                  </motion.div>
+                ) : (
+                  <form
+                    name="contact"
+                    method="POST"
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                    onSubmit={handleSubmit}
+                    className="space-y-4"
+                  >
+                    <input type="hidden" name="form-name" value="contact" />
+                    <input type="hidden" name="bot-field" />
 
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                      className="w-full border p-3 rounded-lg"
+                    />
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Your Email"
+                      required
+                      className="w-full border p-3 rounded-lg"
+                    />
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      placeholder="Subject"
+                      required
+                      className="w-full border p-3 rounded-lg"
+                    />
+                    <textarea
+                      id="message"
+                      name="message"
+                      placeholder="Your Message"
+                      required
+                      className="w-full border p-3 rounded-lg h-32"
+                    ></textarea>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={6}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  ></textarea>
-                </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  type="submit"
-                  disabled={isSending}
-                  className={`w-full py-3 px-6 rounded-lg transition flex items-center justify-center space-x-2 ${
-                    isSending ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700"
-                  }`}
-                >
-                  {isSending ? (
-                    <>
-                      <Send className="h-5 w-5 animate-spin" />
-                      <span>Sending...</span>
-                    </>
-                  ) : isSubmitted ? (
-                    <>
-                      <CheckCircle className="h-5 w-5" />
-                      <span>Message Sent!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-5 w-5" />
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      type="submit"
+                      className="w-full bg-pink-600 text-white py-3 rounded-lg hover:bg-pink-700 transition"
+                    >
+                      <Send className="h-5 w-5 inline-block mr-2" />
                       <span>Send Message</span>
-                    </>
-                  )}
-                </motion.button>
-              </form>
+                    </motion.button>
+                  </form>
+                )}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
